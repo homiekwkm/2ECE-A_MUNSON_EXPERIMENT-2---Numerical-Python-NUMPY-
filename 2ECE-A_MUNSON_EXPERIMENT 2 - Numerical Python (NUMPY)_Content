@@ -1,0 +1,107 @@
+import numpy as np
+
+#Normalization Problem
+
+#### > For this problem, we are tasked to create a function that can normalize a variable X that is a random 5 x 5 ndarray, then save the result. To achieve this, we first focus on making the function that utilizes the normalization formula:
+
+#Create a 5x5 array with random values
+X = np.random.random((5,5))
+
+#Get mean of X
+mean = X.mean()
+
+#Get standard deviation of X 
+std = X.std()
+
+#Normalize X
+Z = X-mean/std
+
+#### > That covers the function itself, now we are able to print the result, as well as save the result. The combined code should be:
+
+X = np.random.random((5,5))
+
+mean = X.mean()
+
+std = X.std()
+
+Z = X-mean/std
+
+#Equate Z to result
+result = Z
+
+#Print result; both X and Z arrays are printed for reference
+print(" X array: \n", X)
+print("\n Z array (X Normalized): \n", result)
+
+#Save the result as 'X_normalized'
+np.save('X_normalized', result)
+
+ X array: 
+ [[0.05737184 0.7158776  0.08402778 0.94365023 0.67806752]
+ [0.92257321 0.52408895 0.52937104 0.68718471 0.97474935]
+ [0.65992938 0.91399912 0.11391807 0.95218992 0.31752887]
+ [0.69267535 0.53124785 0.62928808 0.62802867 0.92954859]
+ [0.58785561 0.21213778 0.97129121 0.0953384  0.0886603 ]]
+
+ Z array (X Normalized): 
+ [[-1.79954234 -1.14103658 -1.7728864  -0.91326396 -1.17884666]
+ [-0.93434098 -1.33282523 -1.32754315 -1.16972948 -0.88216484]
+ [-1.19698481 -0.94291506 -1.74299612 -0.90472427 -1.53938531]
+ [-1.16423883 -1.32566634 -1.22762611 -1.22888552 -0.92736559]
+ [-1.26905857 -1.6447764  -0.88562297 -1.76157578 -1.76825389]]
+
+#### > Code should result in such an output that displays two 5 x 5 arrays, X array and Z array (X Normalized), in an arranged manner. 
+
+# Divisible by 3 Problem
+
+#### > In this problem, a 10 x 10 ndarray of squares of the first 100 positive integers is to be created; then with this ndarray, a function is required to determine all the elements within it that are divisible by 3. Once the result is achieved, it should be saved. We can accomplish this by first creating the function:
+
+#Create an array of positive integers from 1 to 100
+positive_integers = np.arange(1,101)
+
+#Create another array but of squares of positive integers from 1 to 100 by raising the first array to 2
+A = positive_integers**2
+
+#Reshape array A into 10 x 10 array
+shape = A.reshape(10,10)
+
+#Define a function so that elements divisible by 3 may be determined; true for divisible elements and false for otherwise
+elements_divisible_by_3 = shape[shape%3==0] 
+
+#### > Having made the function that divides and analyzes the array, printing and saving of result is now possible:
+
+positive_integers = np.arange(1,101)
+
+A = positive_integers**2
+
+shape = A.reshape(10,10)
+
+elements_divisible_by_3 = shape[shape%3==0] 
+
+#Equate elements_divisible_by_3 to result
+result = elements_divisible_by_3 
+
+#Print result; squares of the first 100 positive integers before divided and analyzed is printed to compare to the found elements that are divisible by 3 
+print("Squares of the first 100 positive integers: \n", A) 
+print("\nElements divisible by 3: \n", result)
+
+#Save the result as 'div_by_3.npy'
+np.save('div_by_3.npy', result)
+
+Squares of the first 100 positive integers: 
+ [    1     4     9    16    25    36    49    64    81   100   121   144
+   169   196   225   256   289   324   361   400   441   484   529   576
+   625   676   729   784   841   900   961  1024  1089  1156  1225  1296
+  1369  1444  1521  1600  1681  1764  1849  1936  2025  2116  2209  2304
+  2401  2500  2601  2704  2809  2916  3025  3136  3249  3364  3481  3600
+  3721  3844  3969  4096  4225  4356  4489  4624  4761  4900  5041  5184
+  5329  5476  5625  5776  5929  6084  6241  6400  6561  6724  6889  7056
+  7225  7396  7569  7744  7921  8100  8281  8464  8649  8836  9025  9216
+  9409  9604  9801 10000]
+
+Elements divisible by 3: 
+ [   9   36   81  144  225  324  441  576  729  900 1089 1296 1521 1764
+ 2025 2304 2601 2916 3249 3600 3969 4356 4761 5184 5625 6084 6561 7056
+ 7569 8100 8649 9216 9801]
+
+#### > The output from the code should first display the squares of the first 100 positive integers arranged in a 10 x 10 array. The proceeding output should then be elements divisible by 3 in a 10 x 10 array.
